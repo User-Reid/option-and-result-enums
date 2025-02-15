@@ -1,19 +1,7 @@
-fn is_item_in_stock(item_is_in_system: bool, item_is_in_stock: bool) -> Option<bool> {
-    if item_is_in_system && item_is_in_stock {
-        Some(true)
-    } else if item_is_in_system {
-        Some(false)
-    } else {
-        None
-    }
-}
-
 fn main() {
-    let availability: Option<bool> = is_item_in_stock(false, true);
+    let present_value: Option<i32> = Some(13);
+    let missing_value: Option<bool> = None;
 
-    match availability {
-        Some(true) => println!("Item is available"),
-        Some(false) => println!("Yo shit aint here cousin"),
-        None => println!("What the hell are you talking about cuz"),
-    }
+    println!("{}", present_value.unwrap_or(0));
+    println!("{}", missing_value.unwrap_or(false));
 }
