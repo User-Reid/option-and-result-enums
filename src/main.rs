@@ -1,20 +1,19 @@
-fn play(instrument: Option<&String>) {
-    match instrument {
-        Option::Some(instrument) => println!("You are playing the {instrument}"),
-        Option::None => print!("You done fucked up cousin"),
+fn is_item_in_stock(item_is_in_system: bool, item_is_in_stock: bool) -> Option<bool> {
+    if item_is_in_system && item_is_in_stock {
+        Option::Some(true)
+    } else if item_is_in_system {
+        Option::Some(false)
+    } else {
+        Option::None
     }
 }
 
 fn main() {
-    let musical_instruments: [String; 3] = [
-        String::from("Guitar"),
-        String::from("Drums"),
-        String::from("Bass"),
-    ];
+    let availability: Option<bool> = is_item_in_stock(false, true);
 
-    let bass: Option<&String> = musical_instruments.get(2);
-    play(bass);
-
-    let invalid_instrument: Option<&String> = musical_instruments.get(100);
-    play(invalid_instrument)
+    match availability {
+        Option::Some(true) => println!("Item is available"),
+        Option::Some(false) => println!("Yo shit aint here cousin"),
+        Option::None => println!("What the hell are you talking about cuz"),
+    }
 }
