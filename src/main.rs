@@ -8,6 +8,11 @@ fn main() {
     let bass: Option<&String> = musical_instruments.get(2);
     println!("{:?}", bass);
 
+    let valid_instrument: &String = bass.expect("You done fucked up somewhere");
+    println!("{valid_instrument}");
+
     let invalid_instrument: Option<&String> = musical_instruments.get(100);
     println!("{:?}", invalid_instrument);
+
+    invalid_instrument.expect("You done fucked up son ");
 }
