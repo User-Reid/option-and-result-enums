@@ -1,7 +1,13 @@
-fn main() {
-    let ok: Result<i32, &str> = Ok(5);
-    let disaster: Result<i8, &str> = Err("Something bad happened");
+use std::num::ParseIntError;
 
-    println!("{ok:?}");
-    println!("{disaster:?}")
+fn main() {
+    let text: &str = "50";
+    let text_as_number: Result<i8, ParseIntError> = text.parse::<i8>();
+
+    println!("{:?}", text_as_number);
+
+    let text: &str = "Alabama";
+    let text_as_number: Result<i8, ParseIntError> = text.parse::<i8>();
+
+    println!("{:?}", text_as_number)
 }
