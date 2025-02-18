@@ -1,12 +1,18 @@
-fn divide(numerator: f64, denominator: f64) -> Result<f64, String> {
-    if denominator == 0.0 {
-        Err(String::from("You fucked up cousin"))
+fn operation(great_success: bool) -> Result<&'static str, &'static str> {
+    if great_success {
+        Ok("Success")
     } else {
-        Ok(numerator / denominator)
+        Err("Failure")
     }
 }
 
 fn main() {
-    let result: Result<f64, String> = divide(2.0, 0.0);
-    println!("{}", result.unwrap())
+    let my_result: Result<&str, &str> = operation(true);
+
+    let content = match my_result {
+        Ok(message) => message,
+        Err(error) => error,
+    };
+
+    println!("{}", my_result.unwrap());
 }
